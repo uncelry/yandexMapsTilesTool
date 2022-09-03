@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Подключаем Bootstrap -->
+	<link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" rel="stylesheet">
+	<script crossorigin="anonymous" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script crossorigin="anonymous" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+	<title>Parking tiles search</title>
+
+	<!-- Подключаем свои скрипты -->
+	<script type="text/javascript" src="script.js"></script>
+</head>
+
+<body class="container-fluid">
+	<!-- Заголовок страницы -->
+	<div class="row">
+		<div class="col">
+			<h2 class="text-center mt-3">Расчет плитки</h2>
+		</div>
+	</div>
+
+	<!-- Блок исходных данных -->
+	<div class="row">
+		<form class="col" id="inputForm">
+			<h3 class="text-center">Исходные данные</h3>
+			<div class="form-group">
+				<label for="exampleInputX">Введите X</label>
+				<input type="number" class="form-control" id="exampleInputX" aria-describedby="xHelp" value="55.750626" required min="-90" max="90" step="0.0000001">
+				<small id="xHelp" class="form-text text-muted">Введите широту точки</small>
+			</div>
+			<div class="form-group">
+				<label for="exampleInputY">Введите Y</label>
+				<input type="number" class="form-control" id="exampleInputY" aria-describedby="yHelp" value="37.597664" required min="-180" max="180" step="0.0000001">
+				<small id="yHelp" class="form-text text-muted">Введите долготу точки</small>
+			</div>
+			<div class="form-group">
+				<label for="exampleInputZ">Введите Z</label>
+				<input type="number" class="form-control" id="exampleInputZ" aria-describedby="zHelp" value="19" required min="0" step="0.01">
+				<small id="zHelp" class="form-text text-muted">Введите уровень масштабирования</small>
+			</div>
+			<div class="form-group">
+				<p>Проекция</p>
+				<div class="form-check">
+					<input class="form-check-input" type="radio" name="projection" id="projElleptic" value="0" checked>
+					<label class="form-check-label" for="projElleptic">Эллиптическая Меркатора</label>
+				</div>
+				<div class="form-check">
+					<input class="form-check-input" type="radio" name="projection" id="projSphere" value="1">
+					<label class="form-check-label" for="projSphere">Сферическая Меркатора</label>
+				</div>
+			</div>
+			<button type="submit" class="btn btn-primary">Получить tile</button>
+		</form>
+
+		<!-- Блок результата -->
+		<div class="col">
+			<h3 class="text-center">Результат</h3>
+			<!-- <div id="result" style="width: 500px;"></div> -->
+			<div class="form-group">
+				<label for="tileX">Tile X</label>
+				<input type="number" class="form-control" id="tileX" disabled aria-describedby="xResHelp" value="316899">
+				<small id="xResHelp" class="form-text text-muted">Номер тайла по X</small>
+			</div>
+			<div class="form-group">
+				<label for="tileY">Tile Y</label>
+				<input type="number" class="form-control" id="tileY" disabled aria-describedby="yResHelp" value="164369">
+				<small id="yResHelp" class="form-text text-muted">Номер тайла по Y</small>
+			</div>
+			<div class="form-group text-center">
+				<img src="https://core-carparks-renderer-lots.maps.yandex.net/maps-rdr-carparks/tiles?l=carparks&x=316899&y=164369&z=19&scale=1&lang=ru_RU&v=20220903-020351" alt="Tile" class="img-thumbnail" id='resImg'>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
